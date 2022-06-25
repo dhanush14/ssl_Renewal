@@ -1,0 +1,19 @@
+[ req ]
+default_bits = 2048
+prompt = no
+encrypt_key = no
+default_md = sha256
+distinguished_name = dn
+req_extensions = req_ext
+
+[ dn ]
+CN = diagnostics.np.in.telstra.com.au
+emailAddress = TeamBappy@team.telstra.com
+O = Telstra Corporation Limited
+L = Melbourne
+ST = Victoria
+C = AU
+0.OU= ITS
+
+[ req_ext ]
+subjectAltName = DNS:diagnostics.np.in.telstra.com.au,DNS:eai-ws-T5-c3-esq-rl01.in.telstra.com.au,DNS:eai-ws-T5-c1-esq-rl01.in.telstra.com.au,DNS:eai-ws-T5-c2-esq-rl01.in.telstra.com.au,DNS:hpapp042.in.telstra.com.au,DNS:hpapp041.in.telstra.com.au,DNS:hpapp043.in.telstra.com.au,DNS:hpap43v7.in.telstra.com.au,DNS:hpap42v5.in.telstra.com.au,DNS:hpap43v5.in.telstra.com.au,DNS:tadmmpkg.in.telstra.com.au,DNS:tadmm.in.telstra.com.au,DNS:tadv6apppkg.in.telstra.com.au,DNS:tadm-massl.np.in.telstra.com.au,DNS:diagnostics.bappy.inside.telstra.com,DNS:diagnostics.non-prod.bappy.inside.telstra.com

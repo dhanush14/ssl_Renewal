@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Generating Full Chain Certificate</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <form  action="http://localhost:8080/p" enctype="multipart/form-data" method="POST"> 
+            <div class="container">
+                <h2>Generating P12 cert</h2>
+                <div id="pms" class="form-group">
+                    <h4>UPload FullChain pem file</h4>
+                    <input type="file" id="fc" name="fc">
+                    <br>
+                    <h4>Upload .key file</h4>
+                    <input type="file" id="ky" name="ky">
+                    <br>
+                    <h4>upload .cer file</h4>
+                    <input type="file" id="cr" name="cr">
+                    
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+            </div>
+             
+        </form>
+        
+    </body>
+</html>

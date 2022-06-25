@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Generating PEM FILE</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script>
+            window.onpopstate=function()
+                    {
+                    alert("Back/Forward clicked!");
+                    }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h3>.cer is SUccessfully converted to .pem</h3>
+            <form action="http://localhost:8080/vw" method="POST">
+                <button type="Disp1" id="dis" name="dis">Verify File1 </button>
+                
+                <button type="Download" id="Dow" name="Dow">Download PEM Files</button>
+                <br>
+                <br>  
+                NOTE:File once downloaded cannot be verified so verify first and then download
+                
+            </form>
+
+        </div>
+    </body>
+</html>

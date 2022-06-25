@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  
+          <script>
+              $(document).ready(function(){
+                 var cz=$("#p");;
+                 var pm=$("#pem");
+                 var CN=$("#cns");
+                 var ea=$("#emails");
+                 var sa=$("#sans");
+                 pm.hide();
+                 ea.prop('required',true);
+                 CN.prop('required',true);
+                 sa.prop('required',true);
+                 
+                 cz.change(function(){
+                     if(cz.is(':checked')){
+                         pm.show();
+                         ea.prop('required',false);
+                         CN.prop('required',false);
+                         sa.prop('required',false);
+                         $("#xyz").prop('required',true);
+                         
+                         
+                     }
+                     else{
+                         pm.hide();
+                         ea.prop('required',true);
+                         CN.prop('required',true);
+                         sa.prop('required',true);
+                         $("#xyz").prop('required',false);
+  
+                         
+                     }
+                 })
+              });
+          </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openDoc(event, 'abc')" id="defaultOpen">generating .csr ,.key and .pem files </button>
+  <button class="tablinks" onclick="openDoc(event, 'def')">Full Chain Certs</button>
+  <button class="tablinks" onclick="openDoc(event, 'ghi')">Generating P12 certs</button>
+</div>
+
+<div id="abc" class="tabcontent">
+    <div class="container">
+        <h2>Generating .CSR and .KEY File</h2>
+        <form action="http://localhost:8080/SSL" enctype="multipart/form-data" method="POST">
+            <br>
+            <div id="cn" class="form-group">
+                <label for="cn">Enter CN:</label>
+                <input type="text" class="form-control" id="cns" name="cns">
+
+            </div>
+            <div id="email" class="form-group">
+                <label for="email">Enter Email:</label>
+                <input type="email" class="form-control" id="emails" name="emails">
+            </div>
+            <div id="san" class="form-group">
+                <label for="san">Enter SubjectAltname:</label>
+                <input type="text" class="form-control" id="sans" name="sans">
+            </div>
+            <div class="form-group">
+                Do You want to Convert .cer to .pem?
+                <input type="checkbox" id="p" name="p">
+            </div>
+            <div id="pem" class="form-group">
+                <label for="pem">UPLOAD .CER FILE</label>
+                <input type="file" id="xyz" name="xyz">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+       
+
+        </form>
+
+    </div>
+</div>
+
+<div id="def" class="tabcontent">
+    <form  action="http://localhost:8080/chain" enctype="multipart/form-data" method="POST"> 
+        <div class="container">
+            <h2>Generating Full Chain Cert from .pem files</h2>
+            <div id="pms" class="form-group">
+                <h4>UPload Base File</h4>
+                <input type="file" id="base" name="base" required>
+                <br>
+                <h4>UPload Root File</h4>
+                <input type="file" id="root" name="root" required>
+                <br>
+                <h4>Upload Intermediate File</h4>
+                <input type="file" id="int" name="int" required>
+                
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+        </div>
+         
+    </form>
+    
+</div>
+
+<div id="ghi" class="tabcontent">
+    <form  action="http://localhost:8080/p" enctype="multipart/form-data" method="POST"> 
+        <div class="container">
+            <h2>Generating P12 cert</h2>
+            <div id="pms" class="form-group">
+                <h4>Upload FullChain pem file</h4>
+                <input type="file" id="fc" name="fc" required>
+                <br>
+                <h4>Upload .key file</h4>
+                <input type="file" id="ky" name="ky" required>
+                <br>
+                <h4>upload .cer file</h4>
+                <input type="file" id="cr" name="cr" required>
+                
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+        </div>
+         
+    </form>
+    
+</div>
+
+<script>
+function openDoc(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Generating CSR and Key File</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+        <script>
+            $(document).ready(function(){
+               var cz=$("#p");;
+               var pm=$("#pem");
+               var CN=$("#cns");
+               var ea=$("#emails");
+               var sa=$("#sans");
+               pm.hide();
+               $("#cerkey").hide();
+               ea.prop('required',true);
+               CN.prop('required',true);
+               sa.prop('required',true);
+               
+               cz.change(function(){
+                   if(cz.is(':checked')){
+                       pm.show();
+                       ea.prop('required',false);
+                       CN.prop('required',false);
+                       sa.prop('required',false);
+                       $("#xyz").prop('required',true);
+                       $("#cky").prop('required',false);
+                       
+                       
+                   }
+                   else if($("#ck").is(':checked')){
+                       $("#cerkey").show();
+                    //pm.show();
+                       ea.prop('required',false);
+                       CN.prop('required',false);
+                       sa.prop('required',false);
+                       $("#xyz").prop('required',false);
+                       $("#cky").prop('required',true);
+                   }
+                   else{
+                       pm.hide();
+                       ea.prop('required',true);
+                       CN.prop('required',true);
+                       sa.prop('required',true);
+                       $("#xyz").prop('required',false);
+                       $("#cky").prop('required',false);
+
+                       
+                   }
+               })
+
+               $("#ck").change(function(){
+                  
+                   if($("#ck").is(':checked')){
+                       $("#cerkey").show();
+                    //pm.show();
+                       ea.prop('required',false);
+                       CN.prop('required',false);
+                       sa.prop('required',false);
+                       $("#xyz").prop('required',false);
+                       $("#cky").prop('required',true);
+                   }
+                   else{
+                       pm.hide();
+                       ea.prop('required',true);
+                       CN.prop('required',true);
+                       sa.prop('required',true);
+                       $("#xyz").prop('required',false);
+                       $("#cky").prop('required',false);
+
+                       
+                   }
+               })
+            });
+        </script>
+</head>
+<body>
+    
+    <div class="container">
+        <h2>Generating .CSR and .KEY File</h2>
+        <form action="http://localhost:8080/SSL" enctype="multipart/form-data" method="POST">
+            <br>
+            <div id="cn" class="form-group">
+                <label for="cn">Enter CN:</label>
+                <input type="text" class="form-control" id="cns" name="cns">
+
+            </div>
+            <div id="email" class="form-group">
+                <label for="email">Enter Email:</label>
+                <input type="email" class="form-control" id="emails" name="emails">
+            </div>
+            <div id="san" class="form-group">
+                <label for="san">Enter SubjectAltname:</label>
+                <input type="text" class="form-control" id="sans" name="sans">
+            </div>
+            <div class="form-group">
+                Do You want to Convert .cer to .pem?
+                <input type="checkbox" id="p" name="p">
+            </div>
+            <div id="pem" class="form-group">
+                <label for="pem">UPLOAD .CER FILES</label>
+                <input type="file" id="xyz" name="xyz">
+            </div>
+            <!--
+            <div class="form-group">
+                Do you want to generate .cer and .key files?
+                <input type="checkbox" id="ck" name="ck">
+            </div>
+            <div id="cerkey" class="form-group">
+                <label for="cerkey">UPLOAD Updated config File</label>
+                <input type="file" id="cky" name="cky">
+            </div>-->
+
+            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="reset" class="btn btn-default">Reset</button>
+       
+
+        </form>
+
+    </div>
+</body>
+
+</html>

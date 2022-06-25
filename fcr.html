@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Generating Full Chain Certificate</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <form  action="http://localhost:8080/chain" enctype="multipart/form-data" method="POST"> 
+            <div class="container">
+                <h2>Generating Full Chain Cert from .pem files</h2>
+                <div id="pms" class="form-group">
+                    <h4>UPload Base File</h4>
+                    <input type="file" id="base" name="base">
+                    <br>
+                    <h4>UPload Root File</h4>
+                    <input type="file" id="root" name="root">
+                    <br>
+                    <h4>Upload Intermediate File</h4>
+                    <input type="file" id="int" name="int">
+                    
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="reset" class="btn btn-default">Reset</button>
+            </div>
+             
+        </form>
+        
+    </body>
+</html>
